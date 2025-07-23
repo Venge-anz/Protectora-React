@@ -1,14 +1,29 @@
-import { useState } from "react";
-import { Navbar } from "./Navbar/navbar";
+import { useContext, useState } from "react";
+import { Navbar } from "./Navbar/Navbar";
+import { Footer } from "./Navbar/Footer";
+import { useNavigate } from "react-router";
+import { AuthContext } from "../auth/context";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); //Deberia cambiar esto por user
   const [password, setPassword] = useState("");
+
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
     console.log("Email:", email);
     console.log("Password:", password);
+  };
+
+  //Cuando le das a login te lleva a la pag inicial
+
+  const onLogin = () => {
+    login(email); //Email o user
+    navigate("/", {
+      replace: true,
+    });
   };
 
   return (
@@ -23,12 +38,12 @@ export const Login = () => {
           <form onSubmit={handleClick}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-amber-50 mb-1">
-                Username or Email
+                Username
                 <a className="text-amber-600">*</a>
               </label>
               <input
                 type="email"
-                placeholder="correo@ejemplo.com"
+                placeholder="Usuario13"
                 className="w-full text-amber-50 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
                 value={email}
@@ -53,6 +68,7 @@ export const Login = () => {
               />
             </div>
             <button
+              onClick={onLogin}
               type="submit"
               className="w-full bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer hover:bg-amber-400 transition"
             >
@@ -67,6 +83,7 @@ export const Login = () => {
           </p>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

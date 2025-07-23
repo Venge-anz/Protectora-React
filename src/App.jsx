@@ -1,15 +1,19 @@
 import { Route, Routes } from "react-router";
-import { Login, Pets, Register, Head } from "./pages";
+import { Login, Register, Head } from "./pages";
+import { Adoptions } from "./pages/Adoptions";
+import { AuthProvider } from "./auth/context";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Head />} />
-        <Route path="login" element={<Login />} />
-        <Route path="pets" element={<Pets />} />
-        <Route path="register" element={<Register />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Head />} />
+          <Route path="login" element={<Login />} />
+          <Route path="adoptions" element={<Adoptions />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }

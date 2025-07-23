@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext, AuthProvider } from "../../auth/context";
 
 export const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+
+  const { user } = useContext(AuthContext); //Igual deberia cambiar email por email
+  const { logout } = useContext(AuthContext); //Igual deberia cambiar email por email
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 shadow-xl/30 p-1">
@@ -55,18 +59,28 @@ export const Navbar = () => {
                     >
                       <li>
                         <button
+                          onClick={() => (window.location.href = "/adoptions")}
                           type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Adoptions
                         </button>
                       </li>
                       <li>
                         <button
+                          onClick={() => (window.location.href = "/sponsor")}
                           type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Sponsor
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          type="button"
+                          className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Shop
                         </button>
                       </li>
                     </ul>
@@ -106,13 +120,19 @@ export const Navbar = () => {
             </div>
 
             <li>
+              <a className="text-amber-50 ml-10  hover:text-yellow-500 ">
+                {" "}
+                {user?.name}
+              </a>
+
               <a
+                onClick={logout}
                 href="/login"
                 className="text-amber-50 ml-10  hover:text-yellow-500 "
               >
-                {" "}
-                Login{" "}
+                {user?.name ? "Logout" : "Login"}
               </a>
+
               <button
                 onClick={() => (window.location.href = "/register")}
                 type="button"

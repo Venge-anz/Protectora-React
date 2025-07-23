@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navbar } from "./Navbar/navbar";
+import { Footer } from "./Navbar/Footer";
 
 export const Register = () => {
   const [name, setName] = useState("");
@@ -77,6 +78,7 @@ export const Register = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

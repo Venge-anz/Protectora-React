@@ -1,4 +1,4 @@
 export * from "./Login";
-export * from "./Pets";
+export * from "./Adoptions";
 export * from "./Register";
-export * from "./Head";
+export * from "./Head/Head";
