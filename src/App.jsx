@@ -1,10 +1,8 @@
 import { Route, Routes } from "react-router";
 import { Login, Register } from "./pages/Account/index";
-import { Adoptions } from "./pages/Categories/Adoptions";
 import { AuthProvider } from "./auth/context";
-import { Sponsorship } from "./pages/Categories/Sponsorship";
 import { Head } from "./pages/Head";
-
+import { Shop, Sponsorship, Adoptions } from "./pages/Categories/index";
 function App() {
   return (
     <>
@@ -12,9 +10,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Head />} />
           <Route path="login" element={<Login />} />
-          <Route path="adoptions" element={<Adoptions />} />
           <Route path="register" element={<Register />} />
+
+          <Route path="adoptions" element={<Adoptions />} />
           <Route path="sponsor" element={<Sponsorship />} />
+          <Route path="shop" element={<Shop />} />
         </Routes>
       </AuthProvider>
     </>
