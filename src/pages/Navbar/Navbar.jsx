@@ -77,6 +77,7 @@ export const Navbar = () => {
                       </li>
                       <li>
                         <button
+                          onClick={() => (window.location.href = "/shop")}
                           type="button"
                           className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >

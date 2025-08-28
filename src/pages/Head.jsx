@@ -23,7 +23,7 @@ export const Head = () => {
 
           <img
             src="src/assets/razas-perros.jpg"
-            className="w-150 shadow-xl/60 mr-10"
+            className="w-150 shadow-xl/60 mr-10 mt-10"
             alt="perros-grupal"
           ></img>
         </div>
@@ -35,7 +35,7 @@ export const Head = () => {
           </div>
         </div>
       </div>
-      
+
       <Footer></Footer>
     </>
   );

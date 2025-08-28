@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Footer } from "../Navbar/Footer";
-import { Navbar } from "../Navbar/Navbar";
+import { Footer } from "../../Navbar/Footer";
+import { Navbar } from "../../Navbar/Navbar";
 import { Pagination } from "@mui/material";
 
 export const Adoptions = () => {
@@ -9,10 +9,6 @@ export const Adoptions = () => {
 
   //Estado de carga
   const [loading, setLoading] = useState(false);
-
-  //Caché de la pagina
-
-  const [cache, setCache] = useState({});
 
   const API_key =
     "live_jsBK3hbBGYks2FxFYphliicuwG7QqRad0jgruer4gyB55nghdkoxGxR9S3GbYmx4";
@@ -83,6 +79,9 @@ export const Adoptions = () => {
                   {dog.breeds?.[0]?.life_span || "Unknown life span"}
                 </p>
               </div>
+              <button className="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded-xl shadow-md hover:shadow-lg cursor-pointer mb-3">
+                Adopt!
+              </button>
             </div>
           ))}
         </div>
