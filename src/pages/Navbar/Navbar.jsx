@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../auth/context";
 
 export const Navbar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+
+  const { user } = useContext(AuthContext); //Igual deberia cambiar email por email
+  const { logout } = useContext(AuthContext); //Igual deberia cambiar email por email
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 shadow-xl/30 p-1">
@@ -17,7 +21,7 @@ export const Navbar = () => {
         {/* ////////////// BUSCADOR */}
         <div className="hidden w-full md:block md:w-auto " id="navbar-default">
           <div
-            className="font-medium flex flex-wrap items-center  p-0.3 mt-4 border border-gray-100 rounded-lg
+            className="font-medium flex flex-wrap items-center p-0.3 mt-4 border border-gray-100 rounded-lg
            bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
           >
             {/* Aqui empieza el buscador */}
@@ -55,18 +59,28 @@ export const Navbar = () => {
                     >
                       <li>
                         <button
+                          onClick={() => (window.location.href = "/adoptions")}
                           type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Adoptions
                         </button>
                       </li>
                       <li>
                         <button
+                          onClick={() => (window.location.href = "/sponsor")}
                           type="button"
-                          className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
-                          Sponsor
+                          Sponsorships
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          type="button"
+                          className="inline-flex w-full px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Shop
                         </button>
                       </li>
                     </ul>
@@ -105,21 +119,47 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <li>
-              <a
-                href="/login"
-                className="text-amber-50 ml-10  hover:text-yellow-500 "
-              >
-                {" "}
-                Login{" "}
-              </a>
-              <button
+            <li className="flex gap-10">
+              <a className="text-yellow-500 ml-10"> {user?.name}</a>
+
+              {user?.name ? (
+                // Si el usuario está logueado, muestra solo el botón Logout
+                <button
+                  onClick={() => {
+                    logout();
+                    window.location.href = "/login";
+                  }}
+                  className="text-amber-50 hover:text-yellow-500 cursor-pointer"
+                >
+                  Logout
+                </button>
+              ) : (
+                // Si NO hay usuario, muestra ambos botones: Login y Get Started
+                <div className=" flex">
+                  <button
+                    onClick={() => (window.location.href = "/login")}
+                    className="text-amber-50 hover:text-yellow-500 cursor-pointer"
+                  >
+                    Login
+                  </button>
+
+                  <button
+                    onClick={() => (window.location.href = "/register")}
+                    type="button"
+                    className="focus:outline-none ml-3 cursor-pointer text-white bg-amber-500 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg px-5 py-2.5 dark:focus:ring-yellow-900"
+                  >
+                    GET STARTED!
+                  </button>
+                </div>
+              )}
+
+              {/* <button
                 onClick={() => (window.location.href = "/register")}
                 type="button"
                 className="focus:outline-none cursor-pointer ml-3 text-white bg-amber-500 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg px-5 py-2.5 dark:focus:ring-yellow-900 w-40 "
               >
                 GET STARTED!
-              </button>
+              </button> */}
             </li>
           </div>
         </div>

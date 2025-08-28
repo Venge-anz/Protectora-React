@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Navbar } from "./Navbar/navbar";
-
+import { Navbar } from "../Navbar/Navbar";
+import { Footer } from "../Navbar/Footer";
 export const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -66,17 +66,18 @@ export const Register = () => {
               type="submit"
               className="w-full bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer hover:bg-amber-400 transition"
             >
-              Login
+              Register
             </button>
           </form>
           <p className="mt-4 text-center text-sm text-gray-500">
             Already have an account??
             <a href="/login" className="text-amber-600 hover:underline m-1 ">
-              Register
+              Login
             </a>
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
