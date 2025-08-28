@@ -1,12 +1,12 @@
 import { Footer } from "../Navbar/Footer";
-import { Navbar } from "../Navbar/navbar";
+import { Navbar } from "../Navbar/Navbar";
 import { SecondHead } from "./SecondHead";
 
 export const Head = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div className="bg-amber-200">
+      <div className="bg-amber-200 ">
         <div className="flex flex-row items-center ">
           <div className="flex flex-col mt-3'">
             <div className="text-7xl font-stretch-extra-condensed ml-60 mr-10 mt-10 mb-20">

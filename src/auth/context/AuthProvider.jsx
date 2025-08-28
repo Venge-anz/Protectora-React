@@ -36,12 +36,12 @@ export const AuthProvider = ({ children }) => {
     const action = {
       type: types.logout,
     };
-    dispatch();
+    dispatch(action);
   };
 
   return (
     <AuthContext.Provider
-      value={{ ...authState, login: login, logout: logout }} ///////////////////
+      value={{ ...authState, login: login, logout: logout }}
     >
       {children}
     </AuthContext.Provider>

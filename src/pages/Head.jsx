@@ -1,4 +1,5 @@
-import { Navbar } from "./Navbar/navbar";
+import { Footer } from "./Navbar/Footer";
+import { Navbar } from "./Navbar/Navbar";
 
 export const Head = () => {
   return (
@@ -34,6 +35,8 @@ export const Head = () => {
           </div>
         </div>
       </div>
+      
+      <Footer></Footer>
     </>
   );
 };
